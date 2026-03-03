@@ -1,10 +1,10 @@
-Should include  
-    A source that generates a constant 0 token stream
-    A sink
-    A one-place buffer
+Should include
+    A source that generates a constant 0 token stream (done)
+    A sink (done)
+    A one-place buffer (Leo/done)
     An initial token buffer, with initial data value 0
     A two-input function, where the function is binary addition of the two 8-bit numbers (ignore the carry-out)
-    A two-way copy
-    A two-way split
-    A two-way mux
-    A two-way demux
+    A two-way copy (Ioannis)
+    A two-way split (Nina)
+    A two-way mux (Christian)
+    A two-way demux (Leo)
