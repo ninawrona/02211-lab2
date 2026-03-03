@@ -1,0 +1,15 @@
+defproc buffer (chan?(int<8>) inp; chan!(int<8>) outp)
+{
+    int<8> x;
+    
+    chp{
+        //*[ #inp -> outp!x; inp?x ] could I just have 4 of these if I know how many?
+
+        *[
+            [#inp -> outp!x;inp?x
+            ]
+        ] 
+    }
+  
+}
+
