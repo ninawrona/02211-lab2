@@ -1,0 +1,35 @@
+import "src/demux.act";
+//demux d;
+
+defproc source(chan!(int<8>) ichan; chan!(bool) bchan){
+    int<8> i;
+    bool b;
+    chp{
+        i:=0;
+        
+        *[ i<7 -> ichan!i; bchan!b;  i:=i+1 ; b:=~b ]
+    }
+}
+
+
+defproc sink(chan?(int<8>) in1; chan?(int<8>) in2){
+    int<8> i;
+    chp{
+        *[
+            [|#in1-> in1?i;log("channel 1: ", i)
+            
+            []#in2-> in2?i;log("channel 2: ", i)
+            
+            |]
+
+        ]
+    }
+}
+
+
+defproc test()
+{
+   source src;
+   sink snk;
+   demux d(src.ichan,src.bchan, snk.in1,snk.in2);
+}

@@ -1,0 +1,40 @@
+/*
+
+defproc combinatorial_demux (bool? in; bool! s;int<8> out1;int<8>out2)
+{
+   chp {
+     in&s -> out1+
+     (~in)&s->out1-
+
+      s->out2-
+
+     in&(~s) -> out2+
+     ^(in)&(~s)->out2-
+
+
+    ~s->out1-
+
+   }
+}
+*/
+
+//chan?(int<8>) inp; chan!(int<8>) outp
+defproc demux(chan?(int<8>) in; chan?(bool) boolin; chan!(int<8>) out1;chan!(int<8>) out2)
+{
+    int<8> inside;
+    bool boolinside;
+    chp{
+
+    
+     *[in?inside,boolin?boolinside;
+     [
+        ~boolinside->out1!inside
+        []boolinside->out2!inside
+     ]
+     
+     
+     ]
+
+    }
+
+}
