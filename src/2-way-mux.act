@@ -1,11 +1,11 @@
-defproc twoWayMux (chan?(int<8>) A; chan?(int<8>) B; chan?(bool) sel; chan!(int<8>) out)
+defproc twoWayMux (chan?(int<8>) A, B; chan?(bool) sel; chan!(int<8>) out)
 {
   int a, b;
   bool s;
   chp {
     *[ sel?s;              // Wait for the selection token
-       [ s ->  B?b; out!b  // If true, ONLY read from B and output
-       [] ~s -> A?a; out!a  // If false, ONLY read from A and output
+       [ s ->  B?b; out!b
+       [] ~s -> A?a; out!a
        ]
     ]
   }
