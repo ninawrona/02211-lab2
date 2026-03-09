@@ -1,0 +1,15 @@
+defproc add (chan?(int<8>) in1; chan?(int<8>) in2; chan!(int<8>) out)
+{
+    int<8> x1;
+    int<8> x2;
+    
+    chp{
+       
+
+        *[
+           in1?x1,in2?x2;out!x1+x2
+        ] 
+    }
+  
+}
+
