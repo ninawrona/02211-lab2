@@ -1,0 +1,86 @@
+import "./src/data-split.act";
+import "syn/bdopt/_all_.act";
+open syn;
+import "./prs/datapath.act";
+
+defproc sdt_split <: split ()
++{
+  syn::sdtvar<4> res2;
+  syn::sdtvar<8> inside;
+  syn::sdtchan<4> out1;
+  syn::sdtvar<4> res1;
+  syn::sdtchan<4> out2;
+  syn::sdtchan<8> in;
+}
+{
+ refine {
+   syn::var_int_ports<8,1,2> var_inside(inside);
+   syn::muxoutport<4,1> out2_muxo(out2);
+   syn::muxoutport<4,1> out1_muxo(out1);
+   syn::var_int_ports<4,1,1> var_res2(res2);
+   syn::var_int_ports<4,1,1> var_res1(res1);
+   syn::muxinport<8,1> in_muxi(in);
+   a1of1 c0;
+   syn::trueto1of2 e0;
+   a1of1 c1;
+   a1of1 c2;
+   syn::recvport<8,8> s_0(c2,in_muxi.m[0],var_inside.in[0]);   a1of1 c3;
+  syn::expr::nullint<8> e1(var_inside.out[0]);
+   syn::expr::blk0 e2(e1.out.d);
+   // wrap and ctl bypass
+   syn::expr::nullint<4> e3();
+   e3.out.d=e2.out;
+   e1.out.r = e3.out.r;
+   std::gates::ctree<1,false> ackmerge3;
+   /* delay: 6.642e-11 */
+   syn::delay<1> delayblk3 (ackmerge3.out, e3.out.a);
+   e1.out.a = ackmerge3.in[0];
+   //end expr blk0
+   syn::transfer<4> s_1(c3, e3.out,var_res1.in[0]);
+   a1of1 c4;
+  syn::expr::nullint<8> e4(var_inside.out[1]);
+   syn::expr::blk1 e5(e4.out.d);
+   // wrap and ctl bypass
+   syn::expr::nullint<4> e6();
+   e6.out.d=e5.out;
+   e4.out.r = e6.out.r;
+   std::gates::ctree<1,false> ackmerge6;
+   /* delay: 6.642e-11 */
+   syn::delay<1> delayblk6 (ackmerge6.out, e6.out.a);
+   e4.out.a = ackmerge6.in[0];
+   //end expr blk1
+   syn::transfer<4> s_2(c4, e6.out,var_res2.in[0]);
+   a1of1 c5;
+  syn::expr::nullint<4> e7(var_res1.out[0]);
+   syn::expr::blk2 e8(e7.out.d);
+   // wrap and ctl bypass
+   syn::expr::nullint<4> e9();
+   e9.out.d=e8.out;
+   e7.out.r = e9.out.r;
+   std::gates::ctree<1,false> ackmerge9;
+   /* delay: 6.642e-11 */
+   syn::delay<1> delayblk9 (ackmerge9.out, e9.out.a);
+   e7.out.a = ackmerge9.in[0];
+   //end expr blk2
+   syn::transfer<4> s_3(c5, e9.out,out1_muxo.m[0]);
+   a1of1 c6;
+  syn::expr::nullint<4> e10(var_res2.out[0]);
+   syn::expr::blk3 e11(e10.out.d);
+   // wrap and ctl bypass
+   syn::expr::nullint<4> e12();
+   e12.out.d=e11.out;
+   e10.out.r = e12.out.r;
+   std::gates::ctree<1,false> ackmerge12;
+   /* delay: 6.642e-11 */
+   syn::delay<1> delayblk12 (ackmerge12.out, e12.out.a);
+   e10.out.a = ackmerge12.in[0];
+   //end expr blk3
+   syn::transfer<4> s_4(c6, e12.out,out2_muxo.m[0]);
+   syn::semi<5> s_5(c1,{c2,c3,c4,c5,c6});
+   syn::loop<1> s_6(c0,{e0.out},{c1});
+/*--- connect reset to go signal ---*/
+   a1of1 c7;
+   syn::sinit s7 (c0);
+ }
+}
+

@@ -1,0 +1,46 @@
+import "./src/buffer.act";
+import "syn/bdopt/_all_.act";
+open syn;
+import "./prs/datapath.act";
+
+defproc sdt_buffer <: buffer ()
++{
+  syn::sdtvar<8> x;
+  syn::sdtchan<8> outp;
+  syn::sdtchan<8> inp;
+}
+{
+ refine {
+   syn::muxoutport<8,1> outp_muxo(outp);
+   syn::muxinport<8,1> inp_muxi(inp);
+   syn::var_int_ports<8,1,1> var_x(x);
+   a1of1 c0;
+   syn::trueto1of2 e0;
+   a1of1 c1;
+   syn::trueto1of2 e1;
+ syn::sdtchan_to_probe<8> s_0(inp);
+ syn::probed_clause<1,{1},1> s_1({e1.out},{s_0.probe});
+   a1of1 c2;
+   a1of1 c3;
+  syn::expr::nullint<8> e2(var_x.out[0]);
+   syn::expr::blk0 e3(e2.out.d);
+   // wrap and ctl bypass
+   syn::expr::nullint<8> e4();
+   e4.out.d=e3.out;
+   e2.out.r = e4.out.r;
+   std::gates::ctree<1,false> ackmerge4;
+   /* delay: 6.642e-11 */
+   syn::delay<1> delayblk4 (ackmerge4.out, e4.out.a);
+   e2.out.a = ackmerge4.in[0];
+   //end expr blk0
+   syn::transfer<8> s_2(c3, e4.out,outp_muxo.m[0]);
+   a1of1 c4;
+   syn::recvport<8,8> s_3(c4,inp_muxi.m[0],var_x.in[0]);   syn::semi<2> s_4(c2,{c3,c4});
+   syn::probed_select<1,1> s_5(c1,{e1.out},{s_1.out},{c2});
+   syn::loop<1> s_6(c0,{e0.out},{c1});
+/*--- connect reset to go signal ---*/
+   a1of1 c5;
+   syn::sinit s5 (c0);
+ }
+}
+

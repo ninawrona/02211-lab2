@@ -1,0 +1,55 @@
+import "./src/add.act";
+import "syn/bdopt/_all_.act";
+open syn;
+import "./prs/datapath.act";
+
+defproc sdt_add <: add ()
++{
+  syn::sdtchan<8> in1;
+  syn::sdtvar<8> x2;
+  syn::sdtvar<8> x1;
+  syn::sdtchan<8> out;
+  syn::sdtchan<8> in2;
+}
+{
+ refine {
+   syn::muxoutport<8,1> out_muxo(out);
+   syn::muxinport<8,1> in1_muxi(in1);
+   syn::var_int_ports<8,1,1> var_x1(x1);
+   syn::var_int_ports<8,1,1> var_x2(x2);
+   syn::muxinport<8,1> in2_muxi(in2);
+   a1of1 c0;
+   syn::trueto1of2 e0;
+   a1of1 c1;
+   a1of1 c2;
+   a1of1 c3;
+   a1of1 c4;
+   syn::semi<1> s_0(c3,{c4});
+   syn::recvport<8,8> s_1(c4,in1_muxi.m[0],var_x1.in[0]);   a1of1 c5;
+   a1of1 c6;
+   syn::semi<1> s_2(c5,{c6});
+   syn::recvport<8,8> s_3(c6,in2_muxi.m[0],var_x2.in[0]);   syn::comma<2> s_4(c2,{c3,c5});
+   a1of1 c7;
+  syn::expr::nullint<8> e1(var_x1.out[0]);
+  syn::expr::nullint<8> e2(var_x2.out[0]);
+   syn::expr::blk0 e3(e2.out.d, e1.out.d);
+   // wrap and ctl bypass
+   syn::expr::nullint<8> e4();
+   e4.out.d=e3.out;
+   e2.out.r = e4.out.r;
+   e1.out.r = e4.out.r;
+   std::gates::ctree<2,false> ackmerge4;
+   /* delay: 9.5778e-10 */
+   syn::delay<3> delayblk4 (ackmerge4.out, e4.out.a);
+   e2.out.a = ackmerge4.in[0];
+   e1.out.a = ackmerge4.in[1];
+   //end expr blk0
+   syn::transfer<8> s_5(c7, e4.out,out_muxo.m[0]);
+   syn::semi<2> s_6(c1,{c2,c7});
+   syn::loop<1> s_7(c0,{e0.out},{c1});
+/*--- connect reset to go signal ---*/
+   a1of1 c8;
+   syn::sinit s8 (c0);
+ }
+}
+

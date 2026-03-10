@@ -1,0 +1,28 @@
+import "./src/sink.act";
+import "syn/bdopt/_all_.act";
+open syn;
+import "./prs/datapath.act";
+
+defproc sdt_sink <: sink ()
++{
+  syn::sdtvar<8> v;
+  syn::sdtchan<8> in;
+}
+{
+ refine {
+   syn::muxinport<8,1> in_muxi(in);
+   syn::var_int_in_ports<8,1> var_v(v);
+   a1of1 c0;
+   syn::trueto1of2 e0;
+   a1of1 c1;
+   a1of1 c2;
+   syn::recvport<8,8> s_0(c2,in_muxi.m[0],var_v.in[0]);   a1of1 c3;
+   syn::sskip s_1(c3);
+   syn::semi<2> s_2(c1,{c2,c3});
+   syn::loop<1> s_3(c0,{e0.out},{c1});
+/*--- connect reset to go signal ---*/
+   a1of1 c4;
+   syn::sinit s4 (c0);
+ }
+}
+

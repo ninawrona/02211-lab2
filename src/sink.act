@@ -1,0 +1,10 @@
+defproc sink (chan?(int<8>) in)
+{
+    int<8> v;
+    chp{
+
+          *[ in?v; log ("Received value: ", v) ]
+    }
+
+}
+

@@ -1,0 +1,10 @@
+defproc source (chan!(int<8>) out)
+{
+    chp{
+        *[
+          out!0
+        ]
+    }
+
+}
+
