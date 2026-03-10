@@ -1,0 +1,23 @@
+import "prs/adder-prs.act";
+
+defproc sourceandsink(chan!(int<8>) in1; chan!(int<8>) in2;chan?(int<8>) out){
+    int<8> i;
+    chp{
+       in1!5,
+       in2!10;
+
+       out?i;
+       log("we should have received 15 and we got ",i);
+       in1!255;
+       in2!10;
+       out?i;
+       log("we should have 9 and we have: ",i)
+    }
+}
+
+defproc test()
+{
+   sourceandsink src;
+
+   sdt_add a(src.in1,src.in2, src.out);
+}
