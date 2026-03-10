@@ -1,7 +1,7 @@
 import "./src/buffer.act";
 import "syn/bdopt/_all_.act";
 open syn;
-import "./prs/datapath.act";
+import "./prs/buf-datapath.act";
 
 defproc sdt_buffer <: buffer ()
 +{

@@ -1,7 +1,7 @@
 import "./src/demux.act";
 import "syn/bdopt/_all_.act";
 open syn;
-import "./prs/datapath.act";
+import "./prs/demux-datapath.act";
 
 defproc sdt_demux <: demux ()
 +{
@@ -15,11 +15,11 @@ defproc sdt_demux <: demux ()
 {
  refine {
    syn::muxoutport<8,1> out2_muxo(out2);
-   syn::var_int_ports<8,1,2> var_inside(inside);
    syn::mux_bool_inport<1> boolin_muxi(boolin);
+   syn::muxinport<8,1> in_muxi(in);
    syn::muxoutport<8,1> out1_muxo(out1);
    syn::var_bool_ports<1,2> var_boolinside(boolinside);
-   syn::muxinport<8,1> in_muxi(in);
+   syn::var_int_ports<8,1,2> var_inside(inside);
    a1of1 c0;
    syn::trueto1of2 e0;
    a1of1 c1;

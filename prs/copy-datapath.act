@@ -1,0 +1,164 @@
+namespace syn {
+
+export namespace expr {
+
+/* -- declarations -- */
+export defproc blk0tmp (bool? e1_50_6; bool? e1_51_6; bool? e1_52_6; bool? e1_53_6; bool? e1_54_6; bool? e1_55_6; bool? e1_56_6; bool? e1_57_6; bool? e1_58_6; bool? e1_59_6; bool? e1_510_6; bool? e1_511_6; bool? e1_512_6; bool? e1_513_6; bool? e1_514_6; bool? e1_515_6; bool? e1_516_6; bool? e1_517_6; bool? e1_518_6; bool? e1_519_6; bool? e1_520_6; bool? e1_521_6; bool? e1_522_6; bool? e1_523_6; bool? e1_524_6; bool? e1_525_6; bool? e1_526_6; bool? e1_527_6; bool? e1_528_6; bool? e1_529_6; bool? e1_530_6; bool? e1_531_6; bool! out_50_6; bool! out_51_6; bool! out_52_6; bool! out_53_6; bool! out_54_6; bool! out_55_6; bool! out_56_6; bool! out_57_6);
+export defproc blk0 (bool? e1[32]; bool! out[8]);
+
+export defproc blk0tmp (bool? e1_50_6; bool? e1_51_6; bool? e1_52_6; bool? e1_53_6; bool? e1_54_6; bool? e1_55_6; bool? e1_56_6; bool? e1_57_6; bool? e1_58_6; bool? e1_59_6; bool? e1_510_6; bool? e1_511_6; bool? e1_512_6; bool? e1_513_6; bool? e1_514_6; bool? e1_515_6; bool? e1_516_6; bool? e1_517_6; bool? e1_518_6; bool? e1_519_6; bool? e1_520_6; bool? e1_521_6; bool? e1_522_6; bool? e1_523_6; bool? e1_524_6; bool? e1_525_6; bool? e1_526_6; bool? e1_527_6; bool? e1_528_6; bool? e1_529_6; bool? e1_530_6; bool? e1_531_6; bool! out_50_6; bool! out_51_6; bool! out_52_6; bool! out_53_6; bool! out_54_6; bool! out_55_6; bool! out_56_6; bool! out_57_6)
+{
+  spec { hazard(*) }
+
+   /*--- types ---*/
+   syn::BUFX2 g2;
+   syn::BUFX2 g0;
+   syn::BUFX2 g6;
+   syn::BUFX2 g5;
+   syn::BUFX2 g3;
+   syn::BUFX2 g7;
+   syn::BUFX2 g4;
+   syn::BUFX2 g1;
+   /*--- connections ---*/
+   g0(.A=e1_50_6, .Y=out_50_6);
+   g1(.A=e1_51_6, .Y=out_51_6);
+   g2(.A=e1_52_6, .Y=out_52_6);
+   g3(.A=e1_53_6, .Y=out_53_6);
+   g4(.A=e1_54_6, .Y=out_54_6);
+   g5(.A=e1_55_6, .Y=out_55_6);
+   g6(.A=e1_56_6, .Y=out_56_6);
+   g7(.A=e1_57_6, .Y=out_57_6);
+}
+
+export defproc blk0 (bool? e1[32]; bool! out[8])
+{
+  spec { hazard(*) }
+
+   /*--- types ---*/
+   bool e1_524_6;
+   bool e1_529_6;
+   bool e1_513_6;
+   bool e1_523_6;
+   bool e1_50_6;
+   bool e1_517_6;
+   bool e1_514_6;
+   blk0tmp _passthru_;
+   bool e1_528_6;
+   bool e1_58_6;
+   bool e1_531_6;
+   bool e1_512_6;
+   bool e1_51_6;
+   bool out_56_6;
+   bool e1_516_6;
+   bool e1_518_6;
+   bool e1_526_6;
+   bool out_55_6;
+   bool e1_515_6;
+   bool out_50_6;
+   bool out_57_6;
+   bool e1_519_6;
+   bool e1_527_6;
+   bool out_53_6;
+   bool e1_56_6;
+   bool e1_510_6;
+   bool out_51_6;
+   bool e1_54_6;
+   bool e1_522_6;
+   bool e1_511_6;
+   bool e1_530_6;
+   bool out_54_6;
+   bool e1_59_6;
+   bool e1_55_6;
+   bool e1_52_6;
+   bool e1_525_6;
+   bool e1_520_6;
+   bool e1_53_6;
+   bool e1_521_6;
+   bool out_52_6;
+   bool e1_57_6;
+   /*--- connections ---*/
+   _passthru_(.e1_50_6=e1[0], .e1_51_6=e1[1], .e1_52_6=e1[2], .e1_53_6=e1[3], .e1_54_6=e1[4], .e1_55_6=e1[5], .e1_56_6=e1[6], .e1_57_6=e1[7], .e1_58_6=e1[8], .e1_59_6=e1[9], .e1_510_6=e1[10], .e1_511_6=e1[11], .e1_512_6=e1[12], .e1_513_6=e1[13], .e1_514_6=e1[14], .e1_515_6=e1[15], .e1_516_6=e1[16], .e1_517_6=e1[17], .e1_518_6=e1[18], .e1_519_6=e1[19], .e1_520_6=e1[20], .e1_521_6=e1[21], .e1_522_6=e1[22], .e1_523_6=e1[23], .e1_524_6=e1[24], .e1_525_6=e1[25], .e1_526_6=e1[26], .e1_527_6=e1[27], .e1_528_6=e1[28], .e1_529_6=e1[29], .e1_530_6=e1[30], .e1_531_6=e1[31], .out_50_6=out[0], .out_51_6=out[1], .out_52_6=out[2], .out_53_6=out[3], .out_54_6=out[4], .out_55_6=out[5], .out_56_6=out[6], .out_57_6=out[7]);
+}
+
+/* -- declarations -- */
+export defproc blk1tmp (bool? e4_50_6; bool? e4_51_6; bool? e4_52_6; bool? e4_53_6; bool? e4_54_6; bool? e4_55_6; bool? e4_56_6; bool? e4_57_6; bool? e4_58_6; bool? e4_59_6; bool? e4_510_6; bool? e4_511_6; bool? e4_512_6; bool? e4_513_6; bool? e4_514_6; bool? e4_515_6; bool? e4_516_6; bool? e4_517_6; bool? e4_518_6; bool? e4_519_6; bool? e4_520_6; bool? e4_521_6; bool? e4_522_6; bool? e4_523_6; bool? e4_524_6; bool? e4_525_6; bool? e4_526_6; bool? e4_527_6; bool? e4_528_6; bool? e4_529_6; bool? e4_530_6; bool? e4_531_6; bool! out_50_6; bool! out_51_6; bool! out_52_6; bool! out_53_6; bool! out_54_6; bool! out_55_6; bool! out_56_6; bool! out_57_6);
+export defproc blk1 (bool? e4[32]; bool! out[8]);
+
+export defproc blk1tmp (bool? e4_50_6; bool? e4_51_6; bool? e4_52_6; bool? e4_53_6; bool? e4_54_6; bool? e4_55_6; bool? e4_56_6; bool? e4_57_6; bool? e4_58_6; bool? e4_59_6; bool? e4_510_6; bool? e4_511_6; bool? e4_512_6; bool? e4_513_6; bool? e4_514_6; bool? e4_515_6; bool? e4_516_6; bool? e4_517_6; bool? e4_518_6; bool? e4_519_6; bool? e4_520_6; bool? e4_521_6; bool? e4_522_6; bool? e4_523_6; bool? e4_524_6; bool? e4_525_6; bool? e4_526_6; bool? e4_527_6; bool? e4_528_6; bool? e4_529_6; bool? e4_530_6; bool? e4_531_6; bool! out_50_6; bool! out_51_6; bool! out_52_6; bool! out_53_6; bool! out_54_6; bool! out_55_6; bool! out_56_6; bool! out_57_6)
+{
+  spec { hazard(*) }
+
+   /*--- types ---*/
+   syn::BUFX2 g2;
+   syn::BUFX2 g0;
+   syn::BUFX2 g6;
+   syn::BUFX2 g5;
+   syn::BUFX2 g3;
+   syn::BUFX2 g7;
+   syn::BUFX2 g4;
+   syn::BUFX2 g1;
+   /*--- connections ---*/
+   g0(.A=e4_50_6, .Y=out_50_6);
+   g1(.A=e4_51_6, .Y=out_51_6);
+   g2(.A=e4_52_6, .Y=out_52_6);
+   g3(.A=e4_53_6, .Y=out_53_6);
+   g4(.A=e4_54_6, .Y=out_54_6);
+   g5(.A=e4_55_6, .Y=out_55_6);
+   g6(.A=e4_56_6, .Y=out_56_6);
+   g7(.A=e4_57_6, .Y=out_57_6);
+}
+
+export defproc blk1 (bool? e4[32]; bool! out[8])
+{
+  spec { hazard(*) }
+
+   /*--- types ---*/
+   bool e4_521_6;
+   bool e4_514_6;
+   blk1tmp _passthru_;
+   bool e4_520_6;
+   bool e4_525_6;
+   bool e4_53_6;
+   bool out_56_6;
+   bool e4_519_6;
+   bool e4_512_6;
+   bool e4_522_6;
+   bool e4_527_6;
+   bool e4_59_6;
+   bool e4_52_6;
+   bool e4_516_6;
+   bool out_55_6;
+   bool out_50_6;
+   bool e4_515_6;
+   bool out_57_6;
+   bool e4_510_6;
+   bool e4_518_6;
+   bool e4_511_6;
+   bool e4_513_6;
+   bool out_53_6;
+   bool e4_531_6;
+   bool e4_57_6;
+   bool e4_50_6;
+   bool out_51_6;
+   bool e4_530_6;
+   bool e4_56_6;
+   bool e4_523_6;
+   bool out_54_6;
+   bool e4_524_6;
+   bool e4_517_6;
+   bool e4_54_6;
+   bool e4_528_6;
+   bool e4_55_6;
+   bool e4_529_6;
+   bool out_52_6;
+   bool e4_526_6;
+   bool e4_58_6;
+   bool e4_51_6;
+   /*--- connections ---*/
+   _passthru_(.e4_50_6=e4[0], .e4_51_6=e4[1], .e4_52_6=e4[2], .e4_53_6=e4[3], .e4_54_6=e4[4], .e4_55_6=e4[5], .e4_56_6=e4[6], .e4_57_6=e4[7], .e4_58_6=e4[8], .e4_59_6=e4[9], .e4_510_6=e4[10], .e4_511_6=e4[11], .e4_512_6=e4[12], .e4_513_6=e4[13], .e4_514_6=e4[14], .e4_515_6=e4[15], .e4_516_6=e4[16], .e4_517_6=e4[17], .e4_518_6=e4[18], .e4_519_6=e4[19], .e4_520_6=e4[20], .e4_521_6=e4[21], .e4_522_6=e4[22], .e4_523_6=e4[23], .e4_524_6=e4[24], .e4_525_6=e4[25], .e4_526_6=e4[26], .e4_527_6=e4[27], .e4_528_6=e4[28], .e4_529_6=e4[29], .e4_530_6=e4[30], .e4_531_6=e4[31], .out_50_6=out[0], .out_51_6=out[1], .out_52_6=out[2], .out_53_6=out[3], .out_54_6=out[4], .out_55_6=out[5], .out_56_6=out[6], .out_57_6=out[7]);
+}
+
+
+}
+
+}

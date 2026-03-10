@@ -1,7 +1,7 @@
 import "./src/source.act";
 import "syn/bdopt/_all_.act";
 open syn;
-import "./prs/datapath.act";
+import "./prs/source-datapath.act";
 
 defproc sdt_source <: source ()
 +{

@@ -1,7 +1,7 @@
 import "./src/sink.act";
 import "syn/bdopt/_all_.act";
 open syn;
-import "./prs/datapath.act";
+import "./prs/sink-datapath.act";
 
 defproc sdt_sink <: sink ()
 +{

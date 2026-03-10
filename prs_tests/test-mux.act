@@ -1,0 +1,46 @@
+import "./prs/mux-prs.act";
+
+defproc src1 (chan!(int<8>) X)
+{
+   chp {
+      X!3; X!5; X!2
+   }
+}
+
+defproc src2(chan!(int<8>) X)
+{
+   chp {
+      X!7; X!9; X!3
+   }
+}
+
+defproc src_sel(chan!(bool) S)
+{
+   chp {
+      S!false;
+      S!true;
+      S!false
+   }
+}
+
+defproc sink(chan?(int<8>) X)
+{
+   int x;
+   chp {
+      // We know exactly what sequence to expect based on our sources
+      X?x; log ("received ", x); assert(x = 3);
+      X?x; log ("received ", x); assert(x = 7);
+      X?x; log ("received ", x); assert(x = 5);
+
+      log ("All assertions passed successfully!")
+   }
+}
+
+defproc test()
+{
+  sdt_twoWayMux m;
+  src1 s1(m.A);
+  src2 s2(m.B);
+  src_sel ctl(m.sel);
+  sink sx(m.out);
+}

@@ -1,4 +1,4 @@
-import "../src/2-way-copy.act";
+import "./src/2-way-copy.act";
 
 defproc src(chan!(int<8>) X)
 {

@@ -1,7 +1,7 @@
 import "./src/2-way-copy.act";
 import "syn/bdopt/_all_.act";
 open syn;
-import "./prs/datapath.act";
+import "./prs/copy-datapath.act";
 
 defproc sdt_twoWayCopy <: twoWayCopy ()
 +{
@@ -12,9 +12,9 @@ defproc sdt_twoWayCopy <: twoWayCopy ()
 }
 {
  refine {
-   syn::muxoutport<8,1> out1_muxo(out1);
    syn::muxinport<8,1> in_muxi(in);
    syn::muxoutport<8,1> out2_muxo(out2);
+   syn::muxoutport<8,1> out1_muxo(out1);
    syn::var_int_ports<32,1,2> var_v(v);
    a1of1 c0;
    syn::trueto1of2 e0;

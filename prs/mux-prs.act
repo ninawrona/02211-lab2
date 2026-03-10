@@ -1,7 +1,7 @@
 import "./src/2-way-mux.act";
 import "syn/bdopt/_all_.act";
 open syn;
-import "./prs/datapath.act";
+import "./prs/mux-datapath.act";
 
 defproc sdt_twoWayMux <: twoWayMux ()
 +{
@@ -15,13 +15,13 @@ defproc sdt_twoWayMux <: twoWayMux ()
 }
 {
  refine {
-   syn::muxinport<8,1> A_muxi(A);
-   syn::var_int_ports<32,1,1> var_b(b);
-   syn::var_bool_ports<1,2> var_s(s);
    syn::var_int_ports<32,1,1> var_a(a);
+   syn::muxinport<8,1> A_muxi(A);
    syn::muxoutport<8,2> out_muxo(out);
-   syn::muxinport<8,1> B_muxi(B);
    syn::mux_bool_inport<1> sel_muxi(sel);
+   syn::var_bool_ports<1,2> var_s(s);
+   syn::var_int_ports<32,1,1> var_b(b);
+   syn::muxinport<8,1> B_muxi(B);
    a1of1 c0;
    syn::trueto1of2 e0;
    a1of1 c1;

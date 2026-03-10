@@ -1,6 +1,5 @@
-import "buffer.act";
+import "./src/buffer.act";
 buffer b;
-
 
 defproc source(chan!(int<8>) X){
     int<8> i;
@@ -10,7 +9,6 @@ defproc source(chan!(int<8>) X){
     }
 }
 
-
 defproc sink(chan?(int<8>) Y){
     int<8> i;
     chp{
@@ -18,10 +16,9 @@ defproc sink(chan?(int<8>) Y){
     }
 }
 
-
 defproc test()
 {
    source src;
    sink snk;
-   store b(src.X, snk.Y);
+   buffer b(src.X, snk.Y);
 }
