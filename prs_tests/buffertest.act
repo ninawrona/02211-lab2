@@ -1,0 +1,24 @@
+import "./prs/buffer-prs.act";
+buffer b;
+
+defproc source(chan!(int<8>) X){
+    int<8> i;
+    chp{
+        i:=0;
+        *[ i<7 -> X!i; i:=i+1]
+    }
+}
+
+defproc sink(chan?(int<8>) Y){
+    int<8> i;
+    chp{
+        *[Y?i; log("Received value ", i)]
+    }
+}
+
+defproc test()
+{
+   source src;
+   sink snk;
+   sdt_buffer b(src.X, snk.Y);
+}

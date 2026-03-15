@@ -1,0 +1,8 @@
+import "src/sink.act";
+import "src/source.act";
+
+defproc test() {
+  source s;
+  sink k;
+  k.in = s.out;
+}

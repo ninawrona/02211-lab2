@@ -1,8 +1,0 @@
-defproc adder(chan?(int<8>) A, B; chan!(int<8>) out)
-{
-    int a, b;
-    chp {
-        *[ A?a, B?b; out!(a+b) ]
-    }
-}
-

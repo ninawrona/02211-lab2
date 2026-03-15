@@ -1,0 +1,40 @@
+import "./prs/two-way-copy-prs.act";
+
+defproc src(chan!(int<8>) X)
+{
+    chp {
+        X!42; X!0; X!255; X!128
+    }
+}
+
+defproc sink1(chan?(int<8>) X)
+{
+    int x;
+    chp {
+        X?x; log("out1 received ", x); assert(x = 42);
+        X?x; log("out1 received ", x); assert(x = 0);
+        X?x; log("out1 received ", x); assert(x = 255);
+        X?x; log("out1 received ", x); assert(x = 128);
+        log("sink1 all assertions passed!")
+    }
+}
+
+defproc sink2(chan?(int<8>) X)
+{
+    int x;
+    chp {
+        X?x; log("out2 received ", x); assert(x = 42);
+        X?x; log("out2 received ", x); assert(x = 0);
+        X?x; log("out2 received ", x); assert(x = 255);
+        X?x; log("out2 received ", x); assert(x = 128);
+        log("sink2 all assertions passed!")
+    }
+}
+
+defproc test()
+{
+    sdt_twoWayCopy c;
+    src s(c.in);
+    sink1 s1(c.out1);
+    sink2 s2(c.out2);
+}

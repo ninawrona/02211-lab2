@@ -1,0 +1,8 @@
+import "prs/sink.act";
+import "prs/source.act";
+
+defproc test() {
+  sdt_source s;
+  sdt_sink k;
+  k.in = s.out;
+}

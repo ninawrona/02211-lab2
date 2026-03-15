@@ -1,0 +1,31 @@
+import "prs/data-split-prs.act";
+
+defproc source(chan!(int<8>) X) {
+    int<8> i;
+    chp {
+        i := 0;
+        *[ i < 100 -> X!i; i := i + 17 ]
+    }
+}
+
+defproc sink_lo(chan?(int<4>) Y) {
+    int<4> i;
+    chp {
+        *[ Y?i; log("LSB nibble: ", i) ]
+    }
+}
+
+defproc sink_hi(chan?(int<4>) Y) {
+    int<4> i;
+    chp {
+        *[ Y?i; log("MSB nibble: ", i) ]
+    }
+}
+
+defproc test()
+{
+    source      src;
+    sink_lo     snk1;
+    sink_hi     snk2;
+    sdt_split       sp(src.X, snk1.Y, snk2.Y);
+}
