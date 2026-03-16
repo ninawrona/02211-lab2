@@ -1,7 +1,7 @@
 CMD?=bash
 
 ACT_HOME?=$(HOME)/act-local
-PATH:=$(PATH):$ACT_HOME/bin
+PATH:=$(PATH):$(ACT_HOME)/bin
 
 PRS_TEST_FILES:=$(wildcard prs_tests/*.act)
 ACT_TEST_FILES:=$(wildcard tests/*.act)
