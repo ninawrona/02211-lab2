@@ -1,5 +1,10 @@
 # 02211-lab2
 
+Wrona, Nina Anna s250693
+Søtorp, Christian Frølund s195041@
+Moe, Leo s251885
+Karkalas, Ioannis s260194
+
 # Running the tests
 For most of the tests, we have setup a makefile, that can all of the commands in one go. To run the tests, simply run the following command in the terminal:
 
