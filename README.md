@@ -1,7 +1,7 @@
 # 02211-lab2
 
 Wrona, Nina Anna s250693
-Søtorp, Christian Frølund s195041@
+Søtorp, Christian Frølund s195041
 Moe, Leo s251885
 Karkalas, Ioannis s260194
 
